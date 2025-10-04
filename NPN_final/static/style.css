@@ -1,0 +1,653 @@
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #ffffff;
+  color: #212529;
+  line-height: 1.6;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.nav-logo {
+  height: 80px;   /* adjust size */
+  width: auto;
+  object-fit: contain;
+  background: transparent;
+}
+
+.navbar img {
+  background: transparent; /* remove background */
+  border-radius: 50%;      /* optional: make circular */
+  width: 100px;             /* adjust size */
+  height: 100px;
+  object-fit: cover;       /* ensures proper scaling */
+}
+
+
+.logo a {
+  display: flex;
+  align-items: center;
+}
+
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.navbar .nav-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.navbar .nav-links li a:hover,
+.navbar .nav-links li a.active {
+  color: #ffd966;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  height: 100vh;
+  background: linear-gradient(135deg, #c471f5, #833ab4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px; /* adjust if needed */
+  background: url('wave1.png') no-repeat center bottom;
+  background-size: cover;
+}
+
+
+
+
+.hero h1 {
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.hero p {
+  color: #f3eaff;
+  font-size: 1.2rem;
+  margin-bottom: 100px;
+}
+
+.buttons .btn {
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+.btn.primary {
+  background: #833ab4;
+  color: #ffffff;
+  border: none;
+}
+
+.btn.primary:hover {
+  background: #5b2a84;
+}
+
+.btn.secondary {
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.btn.secondary:hover {
+  background: #ffffff;
+  color: #833ab4;
+}
+
+.chatbot-avatar {
+  margin-top: 30px;
+  font-size: 3rem;
+  color: #ffffff;
+  background: #5b2a84;
+  padding: 15px;
+  margin-bottom: 150px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #d7c8df;
+}
+
+/* Wave Shape at Bottom of Hero */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: url('wave1.png') no-repeat center bottom;
+  background-size: cover;
+}
+
+/* ===== Features Section ===== */
+.features {
+  text-align: center;
+  padding: 50px 20px;
+  background: white;
+  color: #4b0082;
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #4b0082;
+  text-shadow: 0 0 8px rgba(131, 58, 180, 0.2);
+}
+
+.feature-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background: #ffffff;
+  border: 1px solid #e3e6f0;
+  border-radius: 15px;
+  padding: 40px 30px;
+  width: 320px;
+  min-height: 230px;
+  box-shadow: 0 0 15px rgba(196, 113, 245, 0.3);
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  color: #4b0082;
+}
+
+.feature-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #833ab4;
+}
+
+.feature-card p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 25px rgba(131, 58, 180, 0.5);
+}
+/* ===== About Us Page ===== */
+.about-hero {
+  height: 70vh;
+  background: linear-gradient(to right, #c471f5, #833ab4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero h1 {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+
+.about-hero p {
+  font-size: 2rem;
+  color: #f3eaff;
+  margin-bottom: 90px;
+}
+
+/* Wave at the bottom of About hero */
+.about-hero::after {
+  content: "";
+  position: absolute;
+  bottom: -1px; /* ensures no gap */
+  left: 0;
+  width: 100%;
+  height: 150px; /* adjust based on wave1.png height */
+  background: url('wave1.png') no-repeat center bottom;
+  background-size: cover;
+  z-index: 1;
+}
+
+/* Container below About Hero */
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 25px;
+  margin: 60px auto;
+  max-width: 1100px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2; /* keeps boxes above the wave */
+}
+
+.about-box {
+  background: #ffffff;
+  border: 1px solid #e3e6f0;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(131, 58, 180, 0.2);
+  padding: 40px 30px;
+  flex: 1 1 300px;
+  color: #4b0082;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #833ab4;
+}
+
+.about-box p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.about-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(131, 58, 180, 0.3);
+}
+
+
+/* ===== Chatbot Page ===== */
+.chatbot-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c471f5, #833ab4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.chat-container {
+  width: 400px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: popUp 0.8s ease;
+  margin: auto;
+  margin-top: 80px;
+}
+
+.chat-header {
+  background: linear-gradient(135deg, #c471f5, #833ab4);
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+#chat {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f9fafb;
+}
+
+.message {
+  display: inline-block;
+  max-width: 75%;
+  font-size: 14px;
+  line-height: 1.4;
+  animation: fadeIn 0.4s ease-in;
+}
+
+.message p {
+  padding: 12px 16px;
+  border-radius: 18px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+}
+
+.user {
+  align-self: flex-end;
+}
+
+.user p {
+  background: #f3eaff;
+  color: #5b2a84;
+  border-bottom-right-radius: 5px;
+}
+
+.bot {
+  align-self: flex-start;
+}
+
+.bot p {
+  background: #f3f4f6;
+  color: #111827;
+  border-bottom-left-radius: 5px;
+}
+
+.chat-input {
+  display: flex;
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+#message {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 25px;
+  outline: none;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: border 0.3s;
+}
+
+#message:focus {
+  border: 1px solid #833ab4;
+  background: #fff;
+}
+
+button {
+  margin-left: 10px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c471f5, #833ab4);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 12px rgba(196,113,245,0.3);
+}
+
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(196,113,245,0.5);
+}
+
+.typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.typing span {
+  width: 7px;
+  height: 7px;
+  background: #9ca3af;
+  border-radius: 50%;
+  display: inline-block;
+  animation: blink 1.4s infinite both;
+}
+
+.typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0% { opacity: 0.2; }
+  20% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popUp {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#chat::-webkit-scrollbar {
+  width: 6px;
+}
+
+#chat::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: 10px;
+}
+
+/* ===== Login Page ===== */
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c471f5, #833ab4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+  width: 360px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+  color: #4b0082;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #4b0082;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #4b0082;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  background: #f9f9f9;
+  color: #212529;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.input-group input:focus {
+  background: #ffffff;
+  border-color: #833ab4;
+  box-shadow: 0 0 6px rgba(131,58,180,0.4);
+}
+
+.login-box button {
+  width: 80%;
+  margin-top: 8px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #c471f5, #833ab4);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s ease;
+}
+
+.login-box button:hover {
+  background: linear-gradient(135deg, #9b4db3, #5b2a84);
+  transform: translateY(-2px);
+}
+
+.signup-text {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #333;
+}
+
+.signup-text a {
+  color: #833ab4;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+  color: #5b2a84;
+}
+
+/* ===== Signup Page ===== */
+.signup-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c471f5, #833ab4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-container {
+  background: #ffffff;
+  padding: 20px 20px;     
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+  width: 620px;            
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+  margin: auto;
+  margin-top: 70px;       
+}
+
+.signup-container h2 {
+  margin-bottom: 22px;
+  color: #4b0082;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 6px;
+}
+
+label span {
+  color: red;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+input:focus {
+  border-color: #833ab4;
+  box-shadow: 0 0 6px rgba(131,58,180,0.4);
+}
+
+.signup-container button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 5px;
+  background: linear-gradient(135deg, #c471f5, #833ab4);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s ease;
+}
+
+.signup-container button:hover {
+  background: linear-gradient(135deg, #9b4db3, #5b2a84);
+  transform: translateY(-2px);
+}
+
+.login-link {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.login-link a {
+  color: #833ab4;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+  color: #5b2a84;
+}

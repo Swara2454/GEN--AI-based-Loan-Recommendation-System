@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Login - LoanBot</title>
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="login-page">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='loan4_logo.jpg') }}" alt="Logo" class="nav-logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+    </ul>
+  </nav>
+
+  <div class="login-box">
+    <h2>Welcome Back 👋</h2>
+
+    <!-- Login Form -->
+    <form id="loginForm">
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" name="email_id" placeholder="Enter your email" required>
+      </div>
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Redirect to Signup -->
+    <p class="signup-text">Don’t have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+  </div>
+
+  <!-- JS -->
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async function(e) {
+      e.preventDefault(); // stop page reload
+
+      const formData = new FormData(this);
+
+      const res = await fetch("{{ url_for('login') }}", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        Swal.fire({
+          icon: "success",
+          title: "Welcome!",
+          text: "Login successful",
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          window.location.href = "{{ url_for('chatbot') }}"; // redirect after login
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: data.message,
+          showClass: {
+            popup: 'animate_animated animate_shakeX'
+          },
+          hideClass: {
+            popup: 'animate_animated animate_fadeOutUp'
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

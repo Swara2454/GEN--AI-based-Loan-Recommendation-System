@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - LoanBot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .error-message {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+      display: block;
+    }
+  </style>
+  <script>
+    function validateForm(event) {
+      // Prevent default form submission
+      event.preventDefault();
+
+      const email = document.forms["signupForm"]["email_id"].value.trim();
+      const name = document.forms["signupForm"]["name"].value.trim();
+      const password = document.forms["signupForm"]["password"].value;
+      const confirmPassword = document.forms["signupForm"]["confirm_password"].value;
+      const mobile = document.forms["signupForm"]["mobile_no"].value.trim();
+
+      let errorMsg = "";
+
+      // Clear previous errors
+      document.getElementById("emailError").textContent = "";
+      document.getElementById("passwordError").textContent = "";
+
+      // Email validation (full format)
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in|org|net|edu)$/;
+      if (!emailPattern.test(email)) {
+        errorMsg = "Please enter a valid email address (e.g., name@example.com).";
+        document.getElementById("emailError").textContent = errorMsg;
+        return false;
+      }
+
+      // Password validation
+      if (!email || !name || !password || !confirmPassword || !mobile) {
+        errorMsg = "Please fill in all fields.";
+        document.getElementById("passwordError").textContent = errorMsg;
+        return false;
+      } else if (password !== confirmPassword) {
+        errorMsg = "Passwords do not match.";
+        document.getElementById("passwordError").textContent = errorMsg;
+        return false;
+      } else if (!/[A-Z]/.test(password)) {
+        errorMsg = "Password must contain at least one uppercase letter.";
+        document.getElementById("passwordError").textContent = errorMsg;
+        return false;
+      } else if (!/[a-z]/.test(password)) {
+        errorMsg = "Password must contain at least one lowercase letter.";
+        document.getElementById("passwordError").textContent = errorMsg;
+        return false;
+      } else if (!/[0-9]/.test(password)) {
+        errorMsg = "Password must contain at least one number.";
+        document.getElementById("passwordError").textContent = errorMsg;
+        return false;
+      } else if (!/[!@#$%^&*]/.test(password)) {
+        errorMsg = "Password must contain at least one special character (!@#$%^&*).";
+        document.getElementById("passwordError").textContent = errorMsg;
+        return false;
+      } else if (password.length < 8) {
+        errorMsg = "Password must be at least 8 characters long.";
+        document.getElementById("passwordError").textContent = errorMsg;
+        return false;
+      }
+
+      // If validation passes, submit the form
+      document.forms["signupForm"].submit();
+    }
+  </script>
+</head>
+<body class="signup-page">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='loan4_logo.jpg') }}" alt="Logo" class="nav-logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('login') }}">Login</a></li>
+    </ul>
+  </nav>
+
+  <div class="signup-container">
+    <h2>Create Account</h2>
+
+    <!-- Signup Form -->
+    <form name="signupForm" action="{{ url_for('signup') }}" method="POST" novalidate onsubmit="validateForm(event)">
+
+      <div class="form-group">
+        <label>Email ID <span>*</span></label>
+        <input type="email" name="email_id" placeholder="Enter your email" required>
+        <span id="emailError" class="error-message"></span>
+      </div>
+
+      <div class="form-group">
+        <label>Full Name <span>*</span></label>
+        <input type="text" name="name" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Password <span>*</span></label>
+        <input type="password" name="password" placeholder="Enter password" required>
+        <span id="passwordError" class="error-message"></span>
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password <span>*</span></label>
+        <input type="password" name="confirm_password" placeholder="Re-enter password" required>
+      </div>
+
+      <div class="form-group">
+        <label>Mobile Number <span>*</span></label>
+        <input type="text" name="mobile_no" placeholder="Enter mobile number" required>
+      </div>
+
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <!-- Link to Login -->
+    <div class="login-link">
+      Already have an account? <a href="{{ url_for('login') }}">Log In</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loan Recommendation Chatbot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    /* Simple Navbar Styling */
+    /* Simple Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: transparent;
+  padding: 10px 20px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.navbar .nav-left a, 
+.navbar .nav-right a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 20px;   /* ✅ Increased size */
+}
+
+
+    
+
+  </style>
+</head>
+<body class="chatbot-page">
+
+  <!-- ✅ Added Navbar -->
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="/">Home</a>
+    </div>
+    <div class="nav-right">
+      <span id="nav-username">{{ username }}</span>
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+
+  <div class="chat-container">
+    <div class="chat-header">
+      🤖 LoanBot - Your Loan Assistant
+      <div id="session-info" style="font-size: 14px; color: red; margin-top: 5px;"></div>
+    </div>
+
+    <div id="chat"></div>
+    <div class="chat-input">
+      <input type="text" id="message" placeholder="Type a message..." />
+      <button onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+  <script>
+    const userId = "user123";
+    const expiry = {expiry , tojson , safe };
+    const loginTime = { login_time , tojson , safe };
+    const username = { username , tojson , safe };
+
+    function updateTimer() {
+      const now = Math.floor(Date.now() / 1000);
+      const remaining = expiry - now;
+
+      if (remaining <= 0) {
+        alert("Session expired. Please log in again.");
+        window.location.href = "/logout";
+        return;
+      }
+
+      const minutes = Math.floor(remaining / 60);
+      const seconds = remaining % 60;
+
+      document.getElementById("session-info").innerText =
+        `👤 ${username} | Login: ${loginTime} | Expires in ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+      // ✅ Update navbar username
+      document.getElementById("nav-username").innerText = username;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    function addMessage(sender, text) {
+      const chat = document.getElementById("chat");
+      const messageDiv = document.createElement("div");
+      messageDiv.classList.add("message", sender);
+      messageDiv.innerHTML = `<p>${text}</p>`;
+      chat.appendChild(messageDiv);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const msg = document.getElementById("message").value;
+      if (!msg) return;
+      addMessage("user", msg);
+      document.getElementById("message").value = "";
+
+      const typingDiv = document.createElement("div");
+      typingDiv.classList.add("message", "bot");
+      typingDiv.innerHTML = `<div class="typing"><span></span><span></span><span></span></div>`;
+      document.getElementById("chat").appendChild(typingDiv);
+      document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+
+      const res = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId, message: msg })
+      });
+
+      const data = await res.json();
+      typingDiv.remove();
+      addMessage("bot", data.reply);
+    }
+  </script>
+</body>
+</html>

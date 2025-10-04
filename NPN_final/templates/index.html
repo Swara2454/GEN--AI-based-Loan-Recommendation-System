@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Loan Chatbot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='loan4_logo.jpg') }}" alt="Logo" class="nav-logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('login') }}">Login</a></li>
+      <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1> Welcome to LoanBot <br> Helping you make smarter loan decisions instantly.</h1>
+      <p>Get personalized loan recommendations powered by AI</p>
+      <div class="buttons">
+        <a href="{{ url_for('about') }}" class="btn secondary">Learn More</a>
+      </div>
+    </div>
+    <div class="chatbot-avatar">🤖</div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2>Why Choose Us?</h2>
+    <div class="feature-boxes">
+      <div class="feature-card">
+        <h3>⚡ Fast Processing</h3>
+        <p>Our AI chatbot instantly analyzes your profile and gives results in seconds.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📊 Smart Insights</h3>
+        <p>Compare loan offers and calculate EMIs with advanced AI-driven tools.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🔒 Data Security</h3>
+        <p>We ensure all your data is safely stored.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

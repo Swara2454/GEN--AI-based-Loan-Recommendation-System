@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - AI LoanBot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='loan4_logo.jpg') }}" alt="Logo" class="nav-logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('login') }}">Login</a></li>
+      <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+    </ul>
+  </nav>
+
+  <!-- About Hero -->
+  <section class="about-hero">
+    <h1>ABOUT US</h1>
+    <p>Empowering smarter, faster, and safer loan decisions with the power of AI.</p>
+  </section>
+
+  <!-- About Content -->
+  <section class="about-container">
+    <div class="about-box">
+      <h2>Who We Are</h2>
+      <p>
+        AI ChatBot is an intelligent loan assistance platform designed to make borrowing
+        simpler, faster, and smarter. Our chatbot uses AI to analyze user needs, recommend
+        the best loan options, and provide instant guidance in a secure and user-friendly way.
+      </p>
+    </div>
+
+    <div class="about-box">
+      <h2>What We Do</h2>
+      <p>
+        We provide personalized loan suggestions, eligibility checks,
+        and real-time support. Our system helps users save time, reduce confusion, and
+        make confident financial decisions backed by AI-powered insights.
+      </p>
+    </div>
+
+    <div class="about-box">
+      <h2>Our Mission</h2>
+      <p>
+        To empower individuals with transparency, security, and smart financial tools
+        that make loan management stress-free and future-ready.
+      </p>
+    </div>
+  </section>
+
+</body>
+</html>
